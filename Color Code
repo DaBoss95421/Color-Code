@@ -1,0 +1,15 @@
+def color_code(number):
+    """
+    Color-codes a number from 1 to 100 on a scale from yellow to red.
+    """
+    # Calculate the color based on the number
+    color_intensity = int((number-1)/99*255)
+    # Create an ANSI escape code for the color
+    return f"\x1b[38;2;255;{255 - color_intensity};{255 - color_intensity}m{number}\x1b[0m"
+
+# Print color-coded numbers from 1 to 100
+for i in range(1, 101):
+    print(color_code(i), end=" ")
+
+# Add a newline at the end for formatting
+print()
