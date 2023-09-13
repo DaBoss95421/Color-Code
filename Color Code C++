@@ -1,0 +1,23 @@
+#include <iostream>
+#include <cmath>
+
+int getColorIntensity(int number) {
+    double normalizedNumber = static_cast<double>(number-1)/99.0;
+    int colorIntensity = static_cast<int>(255*(1.0-normalizedNumber));
+    return colorIntensity;
+}
+
+void printColorCodedNumber(int number) {
+    int colorIntensity = getColorIntensity(number);
+    std::cout << "\x1b[38;2;255;" << colorIntensity << ";" << colorIntensity << "m" << number << "\x1b[0m ";
+}
+
+int main() {
+    for (int i = 1; i <= 100; ++i) {
+        printColorCodedNumber(i);
+    }
+    
+    std::cout << std::endl;
+    
+    return 0;
+}
